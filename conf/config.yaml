@@ -1,0 +1,40 @@
+env_params:
+  #监听地址
+  listenaddr: "0.0.0.0:8080"
+  mode: "debug" #release
+
+mysql:
+  point:
+    dbtype: "mysql"
+    dbhost: "xxxxxx"
+    dbport: 3306
+    dbname: "xxxxxx"
+    dbuser: "root"
+    dbpwd: "xxxxxxx"
+    #打印sql语句
+    logmode: true
+    maxidleconns: 10
+    maxopenconns: 100
+    maxlifetime: 30
+  xadmin:
+    dbtype: "mysql"
+    dbhost: "xxxxxx"
+    dbport: 3306
+    dbname: "xxxxxx"
+    dbuser: "xxxxxx"
+    dbpwd: "xxxxxx"
+    #打印sql语句
+    logmode: true
+    maxidleconns: 10
+    maxopenconns: 100
+    maxlifetime: 30
+
+
+oss:
+  fe-xhey:
+    access_key_id: "xxxxxx"
+    access_key_secret: "xxxxx"
+    host: "https://xxxxx"
+    callback_url: "https://xxxxx"
+    upload_dir: ""
+    expire_time: 3600
