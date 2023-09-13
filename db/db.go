@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"point-manage/config"
+	"codeup.aliyun.com/xhey/server/point-manage/config"
 	logs "github.com/wonderivan/logger"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -126,6 +126,8 @@ func NewInit() {
 		//		model.Role{},
 		//		model.Tags{},
 		//		model.Oplogs{},
+		//		model.Kernel{},
+		//		model.Point{},
 		//	)
 		//}
 

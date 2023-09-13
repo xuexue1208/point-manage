@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"point-manage/db"
-	"point-manage/model"
+	"codeup.aliyun.com/xhey/server/point-manage/db"
+	"codeup.aliyun.com/xhey/server/point-manage/model"
 	"errors"
 	"fmt"
 )
@@ -13,8 +13,8 @@ type point struct{}
 
 func (*point) Create(point *model.Point) (uint, error) {
 	db := db.GetPointDB()
-	tx := db.Create(&point)
 
+	tx := db.Table("point").Create(&point)
 	if tx.Error != nil {
 		return 0, errors.New(fmt.Sprintf("添加埋点失败, %v\n", tx.Error))
 	}

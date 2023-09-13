@@ -1,8 +1,8 @@
 package router
 
 import (
-	"point-manage/controller"
-	"point-manage/middle"
+	"codeup.aliyun.com/xhey/server/point-manage/controller"
+	"codeup.aliyun.com/xhey/server/point-manage/middle"
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
@@ -16,15 +16,15 @@ var Router router
 //初始化路由
 func (r *router) InitApiRouter(router *gin.Engine) {
 	router.GET("/ping", controller.Ping.Ping)
-	//router.POST("/point/login", controller.Ldap.Login)
+	//router.POST("/next/point/login", controller.Ldap.Login)
 	//临时获取token接口,测试使用
-	router.POST("/point/token", controller.Token.GetToken)
-	router.POST("/point/parsetoken", controller.Token.ParseToken)
+	router.POST("/next/point/token", controller.Token.GetToken)
+	router.POST("/next/point/parsetoken", controller.Token.ParseToken)
 	//回调接口,不做jwt认证
-	router.POST("/point/oss/callback", middle.Oplogs(), controller.Oss.Callback)
+	router.POST("/next/point/oss/callback", middle.Oplogs(), controller.Oss.Callback)
 	//prometheus
 	router.GET("/metrics", middle.PromHandler(promhttp.Handler()))
-	apigroup := router.Group("/point")
+	apigroup := router.Group("/next/point")
 	{
 		apigroup.GET("/oss/token", middle.JWTAuth(), middle.Oplogs(), middle.Roleif(), controller.Oss.GetOssToken)
 
@@ -71,7 +71,7 @@ func (r *router) InitApiRouter(router *gin.Engine) {
 
 		apigroup.POST("/demand/update", middle.JWTAuth(), middle.Oplogs(), middle.Roleif(), controller.Demand.Update)
 		apigroup.POST("/create", controller.Point.Create) //客户端埋点上报
-		apigroup.POST("/select", middle.JWTAuth(), middle.Oplogs(), middle.Roleif(), controller.Point.Select)
+		apigroup.POST("/select", controller.Point.Select)
 
 		apigroup.GET("/kernel/event", controller.Kernel.ListKernel)
 		apigroup.POST("/kernel/tagevent", middle.JWTAuth(), middle.Oplogs(), middle.Roleif(), controller.Kernel.TagEventKernalCreate)

@@ -1,6 +1,6 @@
-module point-manage
+module codeup.aliyun.com/xhey/server/point-manage
 
-go 1.17
+go 1.18
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
@@ -10,6 +10,7 @@ require (
 	github.com/wonderivan/logger v1.0.0
 	go.uber.org/zap v1.19.0
 	gopkg.in/yaml.v3 v3.0.1
+	gorm.io/datatypes v1.2.0
 	gorm.io/driver/mysql v1.5.1
 	gorm.io/gorm v1.25.1
 )
